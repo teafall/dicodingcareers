@@ -11,6 +11,12 @@
 <meta property="og:description" content="Join Indonesia's largest tech education platform. Explore open roles across Engineering, Academy, Creative, and more.">
 <meta property="og:image" content="uploads/DJP_1569-Edit.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="uploads/DJP_1569-Edit.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="preload" as="script" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin>
+<link rel="preload" as="script" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -223,7 +229,7 @@
 <!-- ── HERO ── -->
 <div id="hero" style="position:relative; overflow:hidden; border-bottom:1px solid #D0D5DD; min-height:720px; display:flex; align-items:stretch;">
   <!-- Full-bleed background photo -->
-  <img src="uploads/DJP_1569-Edit.jpg" alt="Dicoding HQ" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; z-index:0;">
+  <img src="uploads/DJP_1569-Edit.jpg" alt="Dicoding HQ" fetchpriority="high" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; z-index:0;">
   <!-- Gradient overlay: heavy left, light right -->
   <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(16,24,40,0.93) 0%, rgba(16,24,40,0.78) 40%, rgba(16,24,40,0.38) 100%); z-index:1;"></div>
 
@@ -300,7 +306,7 @@
 
         <!-- Photo (45%) -->
         <div id="why-photo" style="flex:0 0 45%; border-radius:12px; overflow:hidden; position:relative; min-height:320px; opacity:0; transform:translateX(-20px); transition:opacity 500ms ease-out 100ms, transform 500ms ease-out 100ms;">
-          <img src="uploads/Copy of IMG_1235.jpg" alt="Working at Dicoding" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; transition:transform 0.4s ease;" style-hover="transform:scale(1.03);">
+          <img src="uploads/Copy of IMG_1235.jpg" alt="Working at Dicoding" loading="lazy" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; transition:transform 0.4s ease;" style-hover="transform:scale(1.03);">
         </div>
 
         <!-- Benefit points (55%) -->
@@ -372,9 +378,9 @@
           <!-- Photo layers: blurred bg + contained foreground -->
           <sc-if value="{{ emp.hasPhoto }}" hint-placeholder-val="{{ false }}">
             <!-- Blurred background fills card -->
-            <img src="{{ emp.photo }}" alt="" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; filter:blur(20px); transform:scale(1.2); display:block;">
+            <img src="{{ emp.photo }}" alt="" aria-hidden="true" loading="lazy" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; filter:blur(20px); transform:scale(1.2); display:block;">
             <!-- Actual photo: contained so no crop -->
-            <img src="{{ emp.photo }}" alt="{{ emp.name }}" class="emp-photo" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:{{ emp.cardCrop }}; display:block; transition:transform 400ms ease;">
+            <img src="{{ emp.photo }}" alt="{{ emp.name }}" class="emp-photo" loading="lazy" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:{{ emp.cardCrop }}; display:block; transition:transform 400ms ease;">
           </sc-if>
           <sc-if value="{{ emp.noPhoto }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute; inset:0; background:linear-gradient(135deg,#1E3A5F 0%,#0F2544 100%); display:flex; align-items:center; justify-content:center;">
@@ -413,7 +419,7 @@
         <!-- LEFT — photo area -->
         <div style="{{ empModalPhotoColStyle }}" onMouseEnter="{{ pauseEmpModal }}" onMouseLeave="{{ resumeEmpModal }}">
           <sc-for list="{{ empModalPhotos }}" as="mp" hint-placeholder-count="1">
-            <img src="{{ mp.src }}" alt="{{ empModalEmployee.name }}" style="{{ mp.imgStyle }}">
+            <img src="{{ mp.src }}" alt="{{ empModalEmployee.name }}" loading="lazy" decoding="async" style="{{ mp.imgStyle }}">
           </sc-for>
           <!-- Dots -->
           <sc-if value="{{ empModalHasDots }}" hint-placeholder-val="{{ false }}">
@@ -473,7 +479,7 @@
           <div style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
             <sc-for list="{{ sportsLeftPhotos }}" as="sp" hint-placeholder-count="4">
               <sc-if value="{{ sp.hasPhoto }}" hint-placeholder-val="{{ false }}">
-                <img src="{{ sp.src }}" alt="Dicoding Sports activity" style="{{ sp.imgStyle }}">
+                <img src="{{ sp.src }}" alt="Dicoding Sports activity" loading="lazy" decoding="async" style="{{ sp.imgStyle }}">
               </sc-if>
             </sc-for>
             <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
@@ -485,7 +491,7 @@
           <div style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
             <sc-for list="{{ sportsRightPhotos }}" as="sp" hint-placeholder-count="4">
               <sc-if value="{{ sp.hasPhoto }}" hint-placeholder-val="{{ false }}">
-                <img src="{{ sp.src }}" alt="Dicoding Sports activity" style="{{ sp.imgStyle }}">
+                <img src="{{ sp.src }}" alt="Dicoding Sports activity" loading="lazy" decoding="async" style="{{ sp.imgStyle }}">
               </sc-if>
             </sc-for>
             <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
@@ -507,7 +513,7 @@
           <div style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
             <sc-for list="{{ intLeftPhotos }}" as="ip" hint-placeholder-count="5">
               <sc-if value="{{ ip.hasPhoto }}" hint-placeholder-val="{{ false }}">
-                <img src="{{ ip.src }}" alt="Internal team event" style="{{ ip.imgStyle }}">
+                <img src="{{ ip.src }}" alt="Internal team event" loading="lazy" decoding="async" style="{{ ip.imgStyle }}">
               </sc-if>
             </sc-for>
             <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
@@ -519,7 +525,7 @@
           <div style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
             <sc-for list="{{ intRightPhotos }}" as="ip" hint-placeholder-count="5">
               <sc-if value="{{ ip.hasPhoto }}" hint-placeholder-val="{{ false }}">
-                <img src="{{ ip.src }}" alt="Internal team event" style="{{ ip.imgStyle }}">
+                <img src="{{ ip.src }}" alt="Internal team event" loading="lazy" decoding="async" style="{{ ip.imgStyle }}">
               </sc-if>
             </sc-for>
             <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
@@ -542,7 +548,7 @@
           <div style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
             <sc-for list="{{ extLeftPhotos }}" as="ep" hint-placeholder-count="3">
               <sc-if value="{{ ep.hasPhoto }}" hint-placeholder-val="{{ false }}">
-                <img src="{{ ep.src }}" alt="External community event" style="{{ ep.imgStyle }}">
+                <img src="{{ ep.src }}" alt="External community event" loading="lazy" decoding="async" style="{{ ep.imgStyle }}">
               </sc-if>
             </sc-for>
             <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
@@ -555,7 +561,7 @@
           <div style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
             <sc-for list="{{ extRightPhotos }}" as="ep" hint-placeholder-count="3">
               <sc-if value="{{ ep.hasPhoto }}" hint-placeholder-val="{{ false }}">
-                <img src="{{ ep.src }}" alt="External community event" style="{{ ep.imgStyle }}">
+                <img src="{{ ep.src }}" alt="External community event" loading="lazy" decoding="async" style="{{ ep.imgStyle }}">
               </sc-if>
             </sc-for>
             <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
@@ -581,7 +587,7 @@
             <div style="position:relative; height:380px; border-radius:12px; overflow:hidden; cursor:pointer; background:#F2F4F7;" onClick="{{ openBintaroModal }}">
               <sc-for list="{{ bintaroPhotos }}" as="bp" hint-placeholder-count="2">
                 <sc-if value="{{ bp.hasPhoto }}" hint-placeholder-val="{{ false }}">
-                  <img src="{{ bp.src }}" alt="Bintaro" style="{{ bp.imgStyle }}">
+                  <img src="{{ bp.src }}" alt="Bintaro" loading="lazy" decoding="async" style="{{ bp.imgStyle }}">
                 </sc-if>
               </sc-for>
               <sc-if value="{{ bintaroEmpty }}" hint-placeholder-val="{{ false }}">
@@ -607,7 +613,7 @@
             <div style="position:relative; height:380px; border-radius:12px; overflow:hidden; cursor:pointer; background:#F2F4F7;" onClick="{{ openBandungModal }}">
               <sc-for list="{{ bandungPhotos }}" as="bdp" hint-placeholder-count="3">
                 <sc-if value="{{ bdp.hasPhoto }}" hint-placeholder-val="{{ false }}">
-                  <img src="{{ bdp.src }}" alt="Bandung" style="{{ bdp.imgStyle }}">
+                  <img src="{{ bdp.src }}" alt="Bandung" loading="lazy" decoding="async" style="{{ bdp.imgStyle }}">
                 </sc-if>
               </sc-for>
               <sc-if value="{{ bandungEmpty }}" hint-placeholder-val="{{ false }}">
@@ -636,7 +642,7 @@
         <div onClick="{{ closeLifeModal }}" style="position:fixed; inset:0; background:rgba(0,0,0,0.82); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); z-index:600; display:flex; align-items:center; justify-content:center; padding:32px;">
           <div onClick="{{ stopLifeProp }}" style="position:relative; max-width:720px; width:100%; background:#FFFFFF; border-radius:16px; overflow:hidden; animation:lifeModalIn 280ms ease-out both;">
             <button onClick="{{ closeLifeModal }}" style="position:absolute; top:12px; right:16px; background:transparent; border:none; font-size:20px; color:#98A2B3; cursor:pointer; z-index:10; line-height:1; padding:4px 8px; font-family:inherit;" style-hover="color:#101828;">×</button>
-            <img src="{{ lifeModalItem.src }}" alt="{{ lifeModalItem.title }}" style="width:100%; max-height:420px; object-fit:cover; object-position:center; display:block;">
+            <img src="{{ lifeModalItem.src }}" alt="{{ lifeModalItem.title }}" loading="lazy" decoding="async" style="width:100%; max-height:420px; object-fit:cover; object-position:center; display:block;">
             <div style="padding:28px;">
               <div style="font-size:11px; font-weight:700; color:#2563EB; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">{{ lifeModalItem.tab }}</div>
               <div style="font-size:20px; font-weight:700; color:#101828; margin-bottom:8px;">{{ lifeModalItem.title }}</div>
@@ -697,7 +703,7 @@
 
 <!-- ── CLOSING CTA ── -->
 <div style="position:relative; overflow:hidden;">
-  <img src="uploads/Bandung_1.jpg" alt="Dicoding Bandung office" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; z-index:0;">
+  <img src="uploads/Bandung_1.jpg" alt="Dicoding Bandung office" loading="lazy" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; z-index:0;">
   <div style="position:absolute; inset:0; background:linear-gradient(135deg, rgba(13,27,53,0.93) 0%, rgba(26,47,94,0.90) 50%, rgba(13,27,53,0.93) 100%); z-index:1;"></div>
   <div style="position:relative; z-index:2; max-width:1440px; margin:0 auto; padding:120px 60px; text-align:center;">
     <div style="max-width:680px; margin:0 auto;">
