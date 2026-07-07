@@ -425,7 +425,7 @@
           <sc-if value="{{ empModalHasDots }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
               <sc-for list="{{ empModalDots }}" as="dot" hint-placeholder-count="1">
-                <div style="{{ dot.style }}"></div>
+                <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
               </sc-for>
             </div>
           </sc-if>
@@ -484,7 +484,7 @@
             </sc-for>
             <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
               <sc-for list="{{ sportsLeftDots }}" as="dot" hint-placeholder-count="4">
-                <div style="{{ dot.style }}"></div>
+                <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
               </sc-for>
             </div>
           </div>
@@ -496,7 +496,7 @@
             </sc-for>
             <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
               <sc-for list="{{ sportsRightDots }}" as="dot" hint-placeholder-count="4">
-                <div style="{{ dot.style }}"></div>
+                <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
               </sc-for>
             </div>
           </div>
@@ -518,7 +518,7 @@
             </sc-for>
             <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
               <sc-for list="{{ intLeftDots }}" as="dot" hint-placeholder-count="5">
-                <div style="{{ dot.style }}"></div>
+                <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
               </sc-for>
             </div>
           </div>
@@ -530,7 +530,7 @@
             </sc-for>
             <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
               <sc-for list="{{ intRightDots }}" as="dot" hint-placeholder-count="5">
-                <div style="{{ dot.style }}"></div>
+                <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
               </sc-for>
             </div>
           </div>
@@ -553,7 +553,7 @@
             </sc-for>
             <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
               <sc-for list="{{ extLeftDots }}" as="dot" hint-placeholder-count="4">
-                <div style="{{ dot.style }}"></div>
+                <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
               </sc-for>
             </div>
           </div>
@@ -566,7 +566,7 @@
             </sc-for>
             <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
               <sc-for list="{{ extRightDots }}" as="dot" hint-placeholder-count="4">
-                <div style="{{ dot.style }}"></div>
+                <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
               </sc-for>
             </div>
           </div>
@@ -598,7 +598,7 @@
               </sc-if>
               <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
                 <sc-for list="{{ bintaroDots }}" as="dot" hint-placeholder-count="2">
-                  <div style="{{ dot.style }}"></div>
+                  <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
                 </sc-for>
               </div>
             </div>
@@ -624,7 +624,7 @@
               </sc-if>
               <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
                 <sc-for list="{{ bandungDots }}" as="dot" hint-placeholder-count="3">
-                  <div style="{{ dot.style }}"></div>
+                  <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
                 </sc-for>
               </div>
             </div>
@@ -661,42 +661,45 @@
 <div id="jobs" style="background:#FFFFFF; border-bottom:1px solid #D0D5DD;">
   <div style="max-width:1440px; margin:0 auto; padding:96px 60px;">
     <div style="max-width:1022px; margin:0 auto;">
-      <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; gap:32px; flex-wrap:wrap;">
-        <div>
-          <div style="font-size:11px; font-weight:700; color:#2563EB; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:20px;">OPEN POSITIONS</div>
-          <h2 style="font-size:40px; font-weight:600; color:#101828; line-height:1.18; letter-spacing:-0.025em;">Find your role at Dicoding</h2>
-        </div>
-        <div style="text-align:right; flex-shrink:0;">
-          <div style="font-size:36px; font-weight:500; color:#101828; letter-spacing:-0.04em; line-height:1;">{{ jobCountLabel }}</div>
-          <div style="font-size:13px; color:#667085; margin-top:6px;">across all departments</div>
-        </div>
-      </div>
-
-      <div style="border-bottom:1px solid #D0D5DD; margin-bottom:32px; overflow-x:auto; display:flex; gap:0; scrollbar-width:none;">
-        <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="9">
-          <button onClick="{{ tab.onClick }}" style="{{ tab.btnStyle }}">{{ tab.label }}</button>
-        </sc-for>
-      </div>
-
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#D0D5DD; border:1px solid #D0D5DD;">
-        <sc-for list="{{ filteredJobs }}" as="job" hint-placeholder-count="6">
-          <div class="job-card" style="background:#FFFFFF; padding:32px; transition:background 0.2s ease;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-              <span class="job-dept-badge" style="font-size:10px; font-weight:800; color:#2563EB; background:#EFF6FF; padding:4px 10px; letter-spacing:0.08em; text-transform:uppercase; transition:background 0.2s ease, color 0.2s ease;">{{ job.dept }}</span>
-              <span style="font-size:13px; color:#98A2B3; display:flex; align-items:center; gap:5px;"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1a3.5 3.5 0 0 1 3.5 3.5C9.5 7.25 6 11 6 11S2.5 7.25 2.5 4.5A3.5 3.5 0 0 1 6 1Z" fill="#98A2B3"></path></svg>{{ job.location }}</span>
-            </div>
-            <h3 style="font-size:20px; font-weight:700; color:#101828; letter-spacing:-0.02em; line-height:1.25; margin-bottom:12px;">{{ job.title }}</h3>
-            <p style="font-size:14px; color:#667085; line-height:1.8; margin-bottom:28px;">{{ job.desc }}</p>
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                <span style="font-size:12px; color:#475467; background:#F2F4F7; padding:4px 10px; font-weight:500;">{{ job.type }}</span>
-                <span style="font-size:12px; color:#475467; background:#F2F4F7; padding:4px 10px; font-weight:500;">{{ job.level }}</span>
-              </div>
-              <button onClick="{{ job.applyFn }}" class="job-apply-btn" style="font-size:14px; font-weight:700; color:#2563EB; background:transparent; border:none; font-family:inherit; cursor:pointer; padding:0; display:flex; align-items:center; gap:4px; white-space:nowrap;">Apply now →</button>
-            </div>
+      <sc-if value="{{ hasOpenRoles }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; gap:32px; flex-wrap:wrap;">
+          <div>
+            <div style="font-size:11px; font-weight:700; color:#2563EB; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:20px;">OPEN POSITIONS</div>
+            <h2 style="font-size:40px; font-weight:600; color:#101828; line-height:1.18; letter-spacing:-0.025em;">Find your role at Dicoding</h2>
           </div>
-        </sc-for>
-      </div>
+          <div style="text-align:right; flex-shrink:0;">
+            <div style="font-size:36px; font-weight:500; color:#101828; letter-spacing:-0.04em; line-height:1;">{{ jobCountLabel }}</div>
+            <div style="font-size:13px; color:#667085; margin-top:6px;">across all departments</div>
+          </div>
+        </div>
+
+        <div style="border-bottom:1px solid #D0D5DD; margin-bottom:32px; overflow-x:auto; display:flex; gap:0; scrollbar-width:none;">
+          <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="9">
+            <button onClick="{{ tab.onClick }}" style="{{ tab.btnStyle }}">{{ tab.label }}</button>
+          </sc-for>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#D0D5DD; border:1px solid #D0D5DD;">
+          <sc-for list="{{ filteredJobs }}" as="job" hint-placeholder-count="6">
+            <div class="job-card" style="background:#FFFFFF; padding:32px; transition:background 0.2s ease;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                <span class="job-dept-badge" style="font-size:10px; font-weight:800; color:#2563EB; background:#EFF6FF; padding:4px 10px; letter-spacing:0.08em; text-transform:uppercase; transition:background 0.2s ease, color 0.2s ease;">{{ job.dept }}</span>
+                <span style="font-size:13px; color:#98A2B3; display:flex; align-items:center; gap:5px;"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1a3.5 3.5 0 0 1 3.5 3.5C9.5 7.25 6 11 6 11S2.5 7.25 2.5 4.5A3.5 3.5 0 0 1 6 1Z" fill="#98A2B3"></path></svg>{{ job.location }}</span>
+              </div>
+              <h3 style="font-size:20px; font-weight:700; color:#101828; letter-spacing:-0.02em; line-height:1.25; margin-bottom:12px;">{{ job.title }}</h3>
+              <p style="font-size:14px; color:#667085; line-height:1.8; margin-bottom:28px;">{{ job.desc }}</p>
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                  <span style="font-size:12px; color:#475467; background:#F2F4F7; padding:4px 10px; font-weight:500;">{{ job.type }}</span>
+                  <span style="font-size:12px; color:#475467; background:#F2F4F7; padding:4px 10px; font-weight:500;">{{ job.level }}</span>
+                </div>
+                <button onClick="{{ job.applyFn }}" class="job-apply-btn" style="font-size:14px; font-weight:700; color:#2563EB; background:transparent; border:none; font-family:inherit; cursor:pointer; padding:0; display:flex; align-items:center; gap:4px; white-space:nowrap;">Apply now →</button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
     </div>
   </div>
 </div>
@@ -707,13 +710,23 @@
   <div style="position:absolute; inset:0; background:linear-gradient(135deg, rgba(13,27,53,0.93) 0%, rgba(26,47,94,0.90) 50%, rgba(13,27,53,0.93) 100%); z-index:1;"></div>
   <div style="position:relative; z-index:2; max-width:1440px; margin:0 auto; padding:120px 60px; text-align:center;">
     <div style="max-width:680px; margin:0 auto;">
-      <div style="font-size:11px; font-weight:700; color:#32BCAD; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:28px;">YOUR NEXT CHAPTER</div>
-      <h2 style="font-size:60px; font-weight:800; color:#FFFFFF; line-height:1.05; letter-spacing:-0.04em; margin-bottom:24px; text-wrap:pretty;">Your next great chapter starts here.</h2>
-      <p style="font-size:17px; color:#667085; line-height:1.8; margin-bottom:52px; max-width:540px; margin-left:auto; margin-right:auto;">{{ openRolesSummary }} across Engineering, Academy, Creative, and more. Join Indonesia's most impactful EdTech team.</p>
-      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-        <a href="#jobs" style="display:inline-flex; align-items:center; gap:8px; padding:16px 36px; font-size:16px; color:white; background:#2563EB; text-decoration:none; font-weight:700; border:1px solid #2563EB; font-family:inherit;" style-hover="background:#1D4ED8;">See all open roles →</a>
-        <a href="https://forms.gle/LF6hW6RQtK57THJ7A" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; padding:16px 36px; font-size:16px; color:rgba(255,255,255,0.8); background:transparent; text-decoration:none; font-weight:600; border:1px solid rgba(255,255,255,0.2); font-family:inherit;" style-hover="border-color:rgba(255,255,255,0.5); color:white;">Send open application</a>
-      </div>
+      <sc-if value="{{ hasOpenRoles }}" hint-placeholder-val="{{ true }}">
+        <div style="font-size:11px; font-weight:700; color:#32BCAD; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:28px;">YOUR NEXT CHAPTER</div>
+        <h2 style="font-size:60px; font-weight:800; color:#FFFFFF; line-height:1.05; letter-spacing:-0.04em; margin-bottom:24px; text-wrap:pretty;">Your next great chapter starts here.</h2>
+        <p style="font-size:17px; color:#667085; line-height:1.8; margin-bottom:52px; max-width:540px; margin-left:auto; margin-right:auto;">{{ openRolesSummary }} across Engineering, Academy, Creative, and more. Join Indonesia's most impactful EdTech team.</p>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <a href="#jobs" style="display:inline-flex; align-items:center; gap:8px; padding:16px 36px; font-size:16px; color:white; background:#2563EB; text-decoration:none; font-weight:700; border:1px solid #2563EB; font-family:inherit;" style-hover="background:#1D4ED8;">See all open roles →</a>
+          <a href="https://forms.gle/LF6hW6RQtK57THJ7A" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; padding:16px 36px; font-size:16px; color:rgba(255,255,255,0.8); background:transparent; text-decoration:none; font-weight:600; border:1px solid rgba(255,255,255,0.2); font-family:inherit;" style-hover="border-color:rgba(255,255,255,0.5); color:white;">Send open application</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ !hasOpenRoles }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:11px; font-weight:700; color:#32BCAD; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:28px;">NO OPEN ROLES — FOR NOW</div>
+        <h2 style="font-size:60px; font-weight:800; color:#FFFFFF; line-height:1.05; letter-spacing:-0.04em; margin-bottom:24px; text-wrap:pretty;">Great people are worth waiting for.</h2>
+        <p style="font-size:17px; color:#667085; line-height:1.8; margin-bottom:52px; max-width:540px; margin-left:auto; margin-right:auto;">We don't have a role that matches right now — but we'd still love to hear from you. Send an open application and we'll keep you in mind for what's next.</p>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <a href="https://forms.gle/LF6hW6RQtK57THJ7A" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; padding:16px 36px; font-size:16px; color:white; background:#2563EB; text-decoration:none; font-weight:700; border:1px solid #2563EB; font-family:inherit;" style-hover="background:#1D4ED8;">Send Open Application →</a>
+        </div>
+      </sc-if>
     </div>
   </div>
 </div>
@@ -997,8 +1010,8 @@ class Component extends DCLogic {
       src, hasPhoto: !!src,
       imgStyle: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', opacity: i === officeBandungIdx ? 1 : 0, transition: 'opacity 800ms ease-in-out' },
     }));
-    const bintaroDots = this._bintaroPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === officeBintaroIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0 } }));
-    const bandungDots = this._bandungPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === officeBandungIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0 } }));
+    const bintaroDots = this._bintaroPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === officeBintaroIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0, cursor: 'pointer' }, onClick: (e) => { e.stopPropagation(); this.setState({ officeBintaroIdx: i }); } }));
+    const bandungDots = this._bandungPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === officeBandungIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0, cursor: 'pointer' }, onClick: (e) => { e.stopPropagation(); this.setState({ officeBandungIdx: i }); } }));
     const bintaroEmpty = this._bintaroPhotos.every(s => !s);
     const bandungEmpty = this._bandungPhotos.every(s => !s);
     const openBintaroModal = () => this.setState({ lifeModalOpen: true, lifeModalItem: { src: this._bintaroPhotos[officeBintaroIdx], title: 'Bintaro Office', desc: BINTARO_DESC, tab: 'Office' } });
@@ -1088,8 +1101,8 @@ class Component extends DCLogic {
       src, hasPhoto: true,
       imgStyle: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', opacity: i === lifeSportsRightIdx ? 1 : 0, transition: 'opacity 800ms ease-in-out' },
     }));
-    const sportsLeftDots = this._sportsLeftPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === lifeSportsLeftIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0 } }));
-    const sportsRightDots = this._sportsRightPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === lifeSportsRightIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0 } }));
+    const sportsLeftDots = this._sportsLeftPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === lifeSportsLeftIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0, cursor: 'pointer' }, onClick: () => this.setState({ lifeSportsLeftIdx: i }) }));
+    const sportsRightDots = this._sportsRightPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === lifeSportsRightIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0, cursor: 'pointer' }, onClick: () => this.setState({ lifeSportsRightIdx: i }) }));
     const lifeSportsDesc = 'Work hard, play harder. From badminton courts to hiking trails and blood donation drives, staying active is something we genuinely make time for. It keeps us sharp, grounded, and ready to give our best, every single day.';
     // Internal Events pause/resume
     const lifeIntPause = () => {
@@ -1114,8 +1127,8 @@ class Component extends DCLogic {
       src, hasPhoto: true,
       imgStyle: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', opacity: i === lifeIntRightIdx ? 1 : 0, transition: 'opacity 800ms ease-in-out' },
     }));
-    const intLeftDots = this._intLeftPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === lifeIntLeftIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0 } }));
-    const intRightDots = this._intRightPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === lifeIntRightIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0 } }));
+    const intLeftDots = this._intLeftPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === lifeIntLeftIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0, cursor: 'pointer' }, onClick: () => this.setState({ lifeIntLeftIdx: i }) }));
+    const intRightDots = this._intRightPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === lifeIntRightIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0, cursor: 'pointer' }, onClick: () => this.setState({ lifeIntRightIdx: i }) }));
     const lifeIntDesc = 'Some of the best moments at Dicoding happen when we step away from the work. Whether we\'re gathering as one big team, exploring somewhere new together, or simply making space to laugh and recharge, these are the moments that remind us why the people here make all the difference.';
     const lifeExtPause = () => {
       if (this._lifeExtLeftTimer) { clearInterval(this._lifeExtLeftTimer); this._lifeExtLeftTimer = null; }
@@ -1139,8 +1152,8 @@ class Component extends DCLogic {
       src, hasPhoto: true,
       imgStyle: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', opacity: i === lifeExtRightIdx ? 1 : 0, transition: 'opacity 800ms ease-in-out' },
     }));
-    const extLeftDots = this._extLeftPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === lifeExtLeftIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0 } }));
-    const extRightDots = this._extRightPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === lifeExtRightIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0 } }));
+    const extLeftDots = this._extLeftPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === lifeExtLeftIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0, cursor: 'pointer' }, onClick: () => this.setState({ lifeExtLeftIdx: i }) }));
+    const extRightDots = this._extRightPhotos.map((_, i) => ({ style: { width: '6px', height: '6px', borderRadius: '50%', background: i === lifeExtRightIdx ? 'white' : 'rgba(255,255,255,0.4)', transition: 'background 300ms', flexShrink: 0, cursor: 'pointer' }, onClick: () => this.setState({ lifeExtRightIdx: i }) }));
     const lifeExtDesc = 'The faces you see here aren\'t just representing Dicoding. They\'re the people who planned it, built it, and showed up for it together. From developer conferences to campus visits and industry partnerships, we collaborate across teams to connect, inspire, and grow Indonesia\'s tech community together.';
 
     const lifeThumbs = currentPhotos.map((p, i) => ({
@@ -1343,7 +1356,8 @@ class Component extends DCLogic {
     const empModalHasDots = _empModalSrcs.length > 1;
     const empModalDots = empModalHasDots
       ? _empModalSrcs.map((_, i) => ({
-          style: { width: '6px', height: '6px', borderRadius: '50%', background: i === empModalPhoto ? '#2563EB' : 'rgba(255,255,255,0.3)', transition: 'background 300ms' },
+          style: { width: '6px', height: '6px', borderRadius: '50%', background: i === empModalPhoto ? '#2563EB' : 'rgba(255,255,255,0.3)', transition: 'background 300ms', cursor: 'pointer' },
+          onClick: (e) => { e.stopPropagation(); this.setState({ empModalPhoto: i }); },
         }))
       : [];
     const empModalStyle = {
@@ -1403,6 +1417,7 @@ class Component extends DCLogic {
     const count = filteredJobs.length;
     const jobCountLabel = count + (count === 1 ? ' open position' : ' open positions');
     const openRolesSummary = JOBS.length + ' open roles';
+    const hasOpenRoles = JOBS.length > 0;
 
     const tabBase = {
       padding: '12px 18px', fontSize: '13px', fontFamily: 'inherit',
@@ -1436,7 +1451,7 @@ class Component extends DCLogic {
       gallerySlides, galleryDots, galleryPause, galleryResume, scrollToTop,
       toggleMobileMenu, closeMobileMenu, mobileMenuClass, mobileMenuOpen, currentYear,
       modalOpen, modalPhoto: modalPhoto || {}, closeModal, stopProp,
-      filteredJobs, tabs, jobCountLabel, openRolesSummary, showToast, appliedJob,
+      filteredJobs, tabs, jobCountLabel, openRolesSummary, hasOpenRoles, showToast, appliedJob,
     };
   }
 }
