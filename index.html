@@ -159,6 +159,34 @@
       div[style*="padding: 64px 60px 40px"] { padding:40px 20px 24px !important; }
 
       #scroll-top-btn { width:36px !important; height:36px !important; bottom:20px !important; right:20px !important; }
+
+      /* Employee modal: stack photo above info, whole card scrolls */
+      .emp-modal {
+        flex-direction:column !important; height:auto !important; max-height:88vh !important;
+        overflow-y:auto !important; width:calc(100vw - 32px) !important; max-width:440px !important;
+      }
+      .emp-modal-photo-col { flex:none !important; width:100% !important; height:320px !important; }
+      .emp-modal-info-col { flex:none !important; width:100% !important; padding:24px 20px !important; justify-content:flex-start !important; }
+      .emp-modal-quote { flex:none !important; overflow-y:visible !important; }
+
+      /* Carousel dot navigators: bigger touch target */
+      .carousel-dots { gap:8px !important; }
+      .carousel-dots > div, .emp-modal-dots > div { width:10px !important; height:10px !important; }
+
+      /* CTA buttons: full width, stacked, thumb-friendly height */
+      .cta-row { flex-direction:column !important; align-items:stretch !important; }
+      .cta-btn {
+        width:100% !important; justify-content:center !important; text-align:center !important;
+        box-sizing:border-box !important; min-height:48px !important;
+      }
+
+      /* Job cards: tighter padding, readable title */
+      .job-card { padding:20px !important; }
+      .job-card h3 { font-size:18px !important; }
+
+      /* Footer: single column */
+      .footer-top { flex-direction:column !important; gap:32px !important; }
+      .footer-cols { flex-direction:column !important; gap:28px !important; width:100% !important; }
     }
 
     @media (max-width: 560px) {
@@ -246,9 +274,9 @@
 
       <p class="hero-el" style="font-size:17px; color:#CBD5E1; line-height:1.8; margin-bottom:44px; font-weight:400; max-width:480px;">Join us in building Indonesia's largest tech education platform — empowering 1M+ members since 2015.</p>
 
-      <div class="hero-el" style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:56px;">
-        <a href="#jobs" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; font-size:15px; color:white; background:#2563EB; text-decoration:none; font-weight:700; border:1px solid #2563EB;" style-hover="background:#1D4ED8;">Explore Open Roles →</a>
-        <a href="#why-us" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; font-size:15px; color:rgba(255,255,255,0.9); background:rgba(255,255,255,0.1); text-decoration:none; font-weight:600; border:1px solid rgba(255,255,255,0.35);" style-hover="background:rgba(255,255,255,0.18);">Learn About Us</a>
+      <div class="hero-el cta-row" style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:56px;">
+        <a href="#jobs" class="cta-btn" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; font-size:15px; color:white; background:#2563EB; text-decoration:none; font-weight:700; border:1px solid #2563EB;" style-hover="background:#1D4ED8;">Explore Open Roles →</a>
+        <a href="#why-us" class="cta-btn" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; font-size:15px; color:rgba(255,255,255,0.9); background:rgba(255,255,255,0.1); text-decoration:none; font-weight:600; border:1px solid rgba(255,255,255,0.35);" style-hover="background:rgba(255,255,255,0.18);">Learn About Us</a>
       </div>
 
       <div style="padding-top:28px; border-top:1px solid rgba(255,255,255,0.15);">
@@ -353,7 +381,7 @@
         <h3 style="font-size:26px; font-weight:700; color:#101828; letter-spacing:-0.02em; margin-bottom:8px;">Ready to grow with us?</h3>
         <p style="font-size:15px; color:#3B82C4; line-height:1.7;">Join a team building Indonesia's digital future. Your mission starts here.</p>
       </div>
-      <a href="#jobs" style="flex-shrink:0; display:inline-flex; align-items:center; gap:8px; padding:14px 28px; font-size:15px; color:white; background:#2563EB; text-decoration:none; font-weight:700; border:1px solid #2563EB; white-space:nowrap;" style-hover="background:#1D4ED8;">View open roles →</a>
+      <a href="#jobs" class="cta-btn" style="flex-shrink:0; display:inline-flex; align-items:center; gap:8px; padding:14px 28px; font-size:15px; color:white; background:#2563EB; text-decoration:none; font-weight:700; border:1px solid #2563EB; white-space:nowrap;" style-hover="background:#1D4ED8;">View open roles →</a>
     </div>
   </div>
 </div>
@@ -411,19 +439,19 @@
   <!-- MODAL -->
   <sc-if value="{{ empModalOpen }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ closeEmpModal }}" style="position:fixed; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); z-index:500; display:flex; align-items:center; justify-content:center; padding:24px;">
-      <div onClick="{{ stopEmpProp }}" style="{{ empModalStyle }}">
+      <div class="emp-modal" onClick="{{ stopEmpProp }}" style="{{ empModalStyle }}">
 
         <!-- Close -->
         <button onClick="{{ closeEmpModal }}" style="position:absolute; top:0; right:0; background:transparent; border:none; color:rgba(255,255,255,0.5); font-size:20px; cursor:pointer; line-height:1; padding:16px; font-family:inherit; z-index:10;" style-hover="color:#FFFFFF;">×</button>
 
         <!-- LEFT — photo area -->
-        <div style="{{ empModalPhotoColStyle }}" onMouseEnter="{{ pauseEmpModal }}" onMouseLeave="{{ resumeEmpModal }}">
+        <div class="emp-modal-photo-col" style="{{ empModalPhotoColStyle }}" onMouseEnter="{{ pauseEmpModal }}" onMouseLeave="{{ resumeEmpModal }}">
           <sc-for list="{{ empModalPhotos }}" as="mp" hint-placeholder-count="1">
             <img src="{{ mp.src }}" alt="{{ empModalEmployee.name }}" loading="lazy" decoding="async" style="{{ mp.imgStyle }}">
           </sc-for>
           <!-- Dots -->
           <sc-if value="{{ empModalHasDots }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
+            <div class="emp-modal-dots" style="position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
               <sc-for list="{{ empModalDots }}" as="dot" hint-placeholder-count="1">
                 <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
               </sc-for>
@@ -432,12 +460,12 @@
         </div>
 
         <!-- RIGHT — info -->
-        <div style="flex:0 0 50%; display:flex; flex-direction:column; justify-content:center; padding:40px;">
+        <div class="emp-modal-info-col" style="flex:0 0 50%; display:flex; flex-direction:column; justify-content:center; padding:40px;">
           <div style="font-size:10px; font-weight:700; color:#2563EB; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;">{{ empModalEmployee.role }}</div>
           <div style="font-size:22px; font-weight:700; color:#FFFFFF; margin-bottom:8px;">{{ empModalEmployee.name }}</div>
           <div style="width:32px; height:2px; background:#2563EB; margin-bottom:20px;"></div>
           <svg width="32" height="23" viewBox="0 0 56 40" fill="none" style="margin-bottom:12px; display:block; opacity:0.5;"><path d="M0 40V24C0 10.4 7.6 2.4 22.8 0l2.4 4.8C16.4 6.8 11.88 11.8 11.2 20H20V40H0Zm32 0V24C32 10.4 39.6 2.4 54.8 0l2.4 4.8C48.4 6.8 43.88 11.8 43.2 20H52V40H32Z" fill="#2563EB"></path></svg>
-          <p style="font-size:14px; color:#CBD5E1; line-height:1.8; font-style:italic; margin:0 0 20px 0; flex:1; overflow-y:auto;">
+          <p class="emp-modal-quote" style="font-size:14px; color:#CBD5E1; line-height:1.8; font-style:italic; margin:0 0 20px 0; flex:1; overflow-y:auto;">
             <sc-for list="{{ empModalQuoteParts }}" as="qp" hint-placeholder-count="1">
               <span style="{{ qp.style }}">{{ qp.text }}</span>
             </sc-for>
@@ -482,7 +510,7 @@
                 <img src="{{ sp.src }}" alt="Dicoding Sports activity" loading="lazy" decoding="async" style="{{ sp.imgStyle }}">
               </sc-if>
             </sc-for>
-            <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
+            <div class="carousel-dots" style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
               <sc-for list="{{ sportsLeftDots }}" as="dot" hint-placeholder-count="4">
                 <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
               </sc-for>
@@ -494,7 +522,7 @@
                 <img src="{{ sp.src }}" alt="Dicoding Sports activity" loading="lazy" decoding="async" style="{{ sp.imgStyle }}">
               </sc-if>
             </sc-for>
-            <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
+            <div class="carousel-dots" style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
               <sc-for list="{{ sportsRightDots }}" as="dot" hint-placeholder-count="4">
                 <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
               </sc-for>
@@ -516,7 +544,7 @@
                 <img src="{{ ip.src }}" alt="Internal team event" loading="lazy" decoding="async" style="{{ ip.imgStyle }}">
               </sc-if>
             </sc-for>
-            <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
+            <div class="carousel-dots" style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
               <sc-for list="{{ intLeftDots }}" as="dot" hint-placeholder-count="5">
                 <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
               </sc-for>
@@ -528,7 +556,7 @@
                 <img src="{{ ip.src }}" alt="Internal team event" loading="lazy" decoding="async" style="{{ ip.imgStyle }}">
               </sc-if>
             </sc-for>
-            <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
+            <div class="carousel-dots" style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
               <sc-for list="{{ intRightDots }}" as="dot" hint-placeholder-count="5">
                 <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
               </sc-for>
@@ -551,7 +579,7 @@
                 <img src="{{ ep.src }}" alt="External community event" loading="lazy" decoding="async" style="{{ ep.imgStyle }}">
               </sc-if>
             </sc-for>
-            <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
+            <div class="carousel-dots" style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
               <sc-for list="{{ extLeftDots }}" as="dot" hint-placeholder-count="4">
                 <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
               </sc-for>
@@ -564,7 +592,7 @@
                 <img src="{{ ep.src }}" alt="External community event" loading="lazy" decoding="async" style="{{ ep.imgStyle }}">
               </sc-if>
             </sc-for>
-            <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
+            <div class="carousel-dots" style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
               <sc-for list="{{ extRightDots }}" as="dot" hint-placeholder-count="4">
                 <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
               </sc-for>
@@ -596,7 +624,7 @@
                   <span style="font-size:13px; color:#94A3B8;">Photos coming soon</span>
                 </div>
               </sc-if>
-              <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
+              <div class="carousel-dots" style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
                 <sc-for list="{{ bintaroDots }}" as="dot" hint-placeholder-count="2">
                   <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
                 </sc-for>
@@ -622,7 +650,7 @@
                   <span style="font-size:13px; color:#94A3B8;">Photos coming soon</span>
                 </div>
               </sc-if>
-              <div style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
+              <div class="carousel-dots" style="position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5;">
                 <sc-for list="{{ bandungDots }}" as="dot" hint-placeholder-count="3">
                   <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
                 </sc-for>
@@ -714,17 +742,17 @@
         <div style="font-size:11px; font-weight:700; color:#32BCAD; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:28px;">YOUR NEXT CHAPTER</div>
         <h2 style="font-size:60px; font-weight:800; color:#FFFFFF; line-height:1.05; letter-spacing:-0.04em; margin-bottom:24px; text-wrap:pretty;">Your next great chapter starts here.</h2>
         <p style="font-size:17px; color:#667085; line-height:1.8; margin-bottom:52px; max-width:540px; margin-left:auto; margin-right:auto;">{{ openRolesSummary }} across Engineering, Academy, Creative, and more. Join Indonesia's most impactful EdTech team.</p>
-        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-          <a href="#jobs" style="display:inline-flex; align-items:center; gap:8px; padding:16px 36px; font-size:16px; color:white; background:#2563EB; text-decoration:none; font-weight:700; border:1px solid #2563EB; font-family:inherit;" style-hover="background:#1D4ED8;">See all open roles →</a>
-          <a href="https://forms.gle/LF6hW6RQtK57THJ7A" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; padding:16px 36px; font-size:16px; color:rgba(255,255,255,0.8); background:transparent; text-decoration:none; font-weight:600; border:1px solid rgba(255,255,255,0.2); font-family:inherit;" style-hover="border-color:rgba(255,255,255,0.5); color:white;">Send open application</a>
+        <div class="cta-row" style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <a href="#jobs" class="cta-btn" style="display:inline-flex; align-items:center; gap:8px; padding:16px 36px; font-size:16px; color:white; background:#2563EB; text-decoration:none; font-weight:700; border:1px solid #2563EB; font-family:inherit;" style-hover="background:#1D4ED8;">See all open roles →</a>
+          <a href="https://forms.gle/LF6hW6RQtK57THJ7A" target="_blank" rel="noopener" class="cta-btn" style="display:inline-flex; align-items:center; gap:8px; padding:16px 36px; font-size:16px; color:rgba(255,255,255,0.8); background:transparent; text-decoration:none; font-weight:600; border:1px solid rgba(255,255,255,0.2); font-family:inherit;" style-hover="border-color:rgba(255,255,255,0.5); color:white;">Send open application</a>
         </div>
       </sc-if>
       <sc-if value="{{ !hasOpenRoles }}" hint-placeholder-val="{{ false }}">
         <div style="font-size:11px; font-weight:700; color:#32BCAD; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:28px;">NO OPEN ROLES — FOR NOW</div>
         <h2 style="font-size:60px; font-weight:800; color:#FFFFFF; line-height:1.05; letter-spacing:-0.04em; margin-bottom:24px; text-wrap:pretty;">Great people are worth waiting for.</h2>
         <p style="font-size:17px; color:#667085; line-height:1.8; margin-bottom:52px; max-width:540px; margin-left:auto; margin-right:auto;">We don't have a role that matches right now — but we'd still love to hear from you. Send an open application and we'll keep you in mind for what's next.</p>
-        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-          <a href="https://forms.gle/LF6hW6RQtK57THJ7A" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; padding:16px 36px; font-size:16px; color:white; background:#2563EB; text-decoration:none; font-weight:700; border:1px solid #2563EB; font-family:inherit;" style-hover="background:#1D4ED8;">Send Open Application →</a>
+        <div class="cta-row" style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <a href="https://forms.gle/LF6hW6RQtK57THJ7A" target="_blank" rel="noopener" class="cta-btn" style="display:inline-flex; align-items:center; gap:8px; padding:16px 36px; font-size:16px; color:white; background:#2563EB; text-decoration:none; font-weight:700; border:1px solid #2563EB; font-family:inherit;" style-hover="background:#1D4ED8;">Send Open Application →</a>
         </div>
       </sc-if>
     </div>
@@ -735,7 +763,7 @@
 <div style="background:#0C1220;">
   <div style="max-width:1440px; margin:0 auto; padding:64px 60px 40px;">
     <div style="max-width:1022px; margin:0 auto;">
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:56px; gap:48px; flex-wrap:wrap;">
+      <div class="footer-top" style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:56px; gap:48px; flex-wrap:wrap;">
         <div style="max-width:280px;">
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;">
             <svg width="84" height="23" viewBox="0 0 184 46" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0; display:block;">
@@ -756,7 +784,7 @@
           </div>
           <p style="font-size:14px; color:#667085; line-height:1.8;">Indonesia's largest tech learning platform, empowering 1M+ members to build careers in technology since 2015.</p>
         </div>
-        <div style="display:flex; gap:56px; flex-wrap:wrap;">
+        <div class="footer-cols" style="display:flex; gap:56px; flex-wrap:wrap;">
           <div>
             <div style="font-size:10px; font-weight:800; color:#FFFFFF; margin-bottom:20px; letter-spacing:0.1em; text-transform:uppercase;">Company</div>
             <div style="display:flex; flex-direction:column; gap:12px;">
@@ -1305,7 +1333,7 @@ class Component extends DCLogic {
         quote: 'What I love about working at Dicoding is that no one\'s really on their own here. We\'ve got things like AI Sharing Corner and SBB (Sesi Berbagi Bahasa) where people just teach each other stuff, no formal training required. It really showed when we pulled off Dicoding Developer Conference 2026 entirely with our internal team — everyone stepped outside their comfort zone for it. Moments like that remind me success here was never just about hitting your own targets, it\'s about what we build together.' },
       { name: 'Mochamad Rafy Ardhanie', role: 'Engineer · Bintaro', initials: 'MR',
         photos: ['uploads/IMG_5722-a934d6a4.jpg'],
-        modalPhotos: ['uploads/DSC02841-a5d4b3fd.JPG','uploads/IMG_0235-de9f41d3.jpg','uploads/DSC00903-f8fa9a1b.JPG','uploads/20240815_175359-f84abf8a.jpg','uploads/_JP_8670-Edit-3429beeb.jpg'],
+        modalPhotos: ['uploads/DSC02841-a5d4b3fd.JPG',{ src: 'uploads/IMG_0235-de9f41d3.jpg', crop: 'center 82%' },'uploads/DSC00903-f8fa9a1b.JPG','uploads/20240815_175359-f84abf8a.jpg','uploads/_JP_8670-Edit-3429beeb.jpg'],
         cardCrop: 'center 40%', modalCrop: 'center 30%',
         preview: 'Physical and mental health isn\'t just a talking point — it\'s something the company actually backs up.',
         quote: 'At Dicoding, physical and mental health isn\'t just a talking point, it\'s something the company actually backs up. Between the supportive culture and activities like badminton, swimming, hiking, even blood donation drives, I genuinely feel like my work-life balance is taken care of. Honestly, that\'s part of what keeps me motivated to bring my best every day.' },
@@ -1348,10 +1376,14 @@ class Component extends DCLogic {
             : EMPLOYEES[empModal].photos)
       : [];
     const empModalPhotos = _empModalSrcs.length > 0
-      ? _empModalSrcs.map((src, i) => ({
-          src,
-          imgStyle: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: empModalOpen ? (EMPLOYEES[empModal].modalCrop || 'center 30%') : 'center 30%', opacity: i === empModalPhoto ? 1 : 0, transition: 'opacity 700ms ease-in-out' },
-        }))
+      ? _empModalSrcs.map((entry, i) => {
+          const src = typeof entry === 'string' ? entry : entry.src;
+          const crop = (entry && typeof entry === 'object' && entry.crop) || (empModalOpen ? (EMPLOYEES[empModal].modalCrop || 'center 30%') : 'center 30%');
+          return {
+            src,
+            imgStyle: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: crop, opacity: i === empModalPhoto ? 1 : 0, transition: 'opacity 700ms ease-in-out' },
+          };
+        })
       : [{ src: '', imgStyle: { display: 'none' } }];
     const empModalHasDots = _empModalSrcs.length > 1;
     const empModalDots = empModalHasDots
