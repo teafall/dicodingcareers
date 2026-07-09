@@ -134,11 +134,13 @@
       #hero .hero-el[style*="font-size: 30px"] { font-size:19px !important; }
       #hero p.hero-el { font-size:15px !important; }
 
-      #why-us .why-us-inner { flex-direction:column !important; gap:32px !important; }
-      #why-us .why-us-inner > div:first-child { position:static !important; flex:1 1 auto !important; width:100% !important; }
+      #how-we-work .why-us-inner { flex-direction:column !important; gap:32px !important; }
+      #how-we-work .why-us-inner > div:first-child { position:static !important; flex:1 1 auto !important; width:100% !important; }
 
-      #how-we-work > div > div > div[style*="gap: 40px"] { flex-direction:column !important; }
-      #how-we-work div[id="why-photo"] { flex:1 1 auto !important; width:100% !important; min-height:220px !important; }
+      #why-us > div > div > div[style*="gap: 40px"] { flex-direction:column !important; }
+      #why-us div[id="why-photo"] { flex:1 1 auto !important; width:100% !important; min-height:220px !important; }
+
+      .emp-scroll-dots { display:flex !important; }
 
       .life-gallery { flex-direction:column !important; }
       .life-gallery > div { flex:none !important; width:100% !important; height:260px !important; }
@@ -227,8 +229,8 @@
   </a>
   <div class="navbar-links" style="display:flex; gap:32px; align-items:center;">
 
-    <a href="#why-us" style="font-size:14px; color:#475467; text-decoration:none; font-weight:500;" style-hover="color:#101828;">How We Work</a>
-    <a href="#how-we-work" style="font-size:14px; color:#475467; text-decoration:none; font-weight:500;" style-hover="color:#101828;">Work at Dicoding</a>
+    <a href="#how-we-work" style="font-size:14px; color:#475467; text-decoration:none; font-weight:500;" style-hover="color:#101828;">How We Work</a>
+    <a href="#why-us" style="font-size:14px; color:#475467; text-decoration:none; font-weight:500;" style-hover="color:#101828;">Work at Dicoding</a>
     <a href="#life" style="font-size:14px; color:#475467; text-decoration:none; font-weight:500;" style-hover="color:#101828;">Life at Dicoding</a>
     <a href="#jobs" style="font-size:14px; color:#475467; text-decoration:none; font-weight:500;" style-hover="color:#101828;">Open Roles</a>
   </div>
@@ -246,8 +248,8 @@
   </button>
 </div>
 <div class="navbar-mobile-menu{{ mobileMenuClass }}">
-  <a href="#why-us" onClick="{{ closeMobileMenu }}">How We Work</a>
-  <a href="#how-we-work" onClick="{{ closeMobileMenu }}">Work at Dicoding</a>
+  <a href="#how-we-work" onClick="{{ closeMobileMenu }}">How We Work</a>
+  <a href="#why-us" onClick="{{ closeMobileMenu }}">Work at Dicoding</a>
   <a href="#life" onClick="{{ closeMobileMenu }}">Life at Dicoding</a>
   <a href="#jobs" onClick="{{ closeMobileMenu }}">Open Roles</a>
   <a href="https://dicoding.com" target="_blank" rel="noopener" onClick="{{ closeMobileMenu }}">Visit Website</a>
@@ -276,7 +278,7 @@
 
       <div class="hero-el cta-row" style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:56px;">
         <a href="#jobs" class="cta-btn" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; font-size:15px; color:white; background:#2563EB; text-decoration:none; font-weight:700; border:1px solid #2563EB;" style-hover="background:#1D4ED8;">Explore Open Roles →</a>
-        <a href="#why-us" class="cta-btn" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; font-size:15px; color:rgba(255,255,255,0.9); background:rgba(255,255,255,0.1); text-decoration:none; font-weight:600; border:1px solid rgba(255,255,255,0.35);" style-hover="background:rgba(255,255,255,0.18);">Learn About Us</a>
+        <a href="#how-we-work" class="cta-btn" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; font-size:15px; color:rgba(255,255,255,0.9); background:rgba(255,255,255,0.1); text-decoration:none; font-weight:600; border:1px solid rgba(255,255,255,0.35);" style-hover="background:rgba(255,255,255,0.18);">Learn About Us</a>
       </div>
 
       <div style="padding-top:28px; border-top:1px solid rgba(255,255,255,0.15);">
@@ -288,7 +290,7 @@
 </div>
 
 <!-- ── CORE VALUES ── -->
-<div id="why-us" style="background:#FFFFFF; border-bottom:1px solid #D0D5DD;">
+<div id="how-we-work" style="background:#FFFFFF; border-bottom:1px solid #D0D5DD;">
   <div style="max-width:1440px; margin:0 auto; padding:96px 60px;">
     <div class="why-us-inner" style="max-width:1022px; margin:0 auto; display:flex; gap:96px; align-items:flex-start;">
       <!-- Left: heading -->
@@ -319,7 +321,7 @@
 </div>
 
 <!-- ── WHY JOIN US ── -->
-<div id="how-we-work" style="background:#FFFFFF; border-bottom:1px solid #E4E7EC;">
+<div id="why-us" style="background:#FFFFFF; border-bottom:1px solid #E4E7EC;">
   <div style="max-width:1440px; margin:0 auto; padding:96px 60px;">
     <div style="max-width:1022px; margin:0 auto;">
 
@@ -398,7 +400,7 @@
     </div>
 
     <!-- Horizontal scroll with fade edges -->
-    <div id="emp-scroll" style="overflow-x:scroll; overflow-y:visible; scrollbar-width:none; display:flex; gap:20px; padding:8px 80px 24px; scroll-snap-type:x mandatory; mask-image:linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%); -webkit-mask-image:linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);">
+    <div id="emp-scroll" data-swipe="emp" style="overflow-x:scroll; overflow-y:visible; scrollbar-width:none; display:flex; gap:20px; padding:8px 80px 24px; scroll-snap-type:x mandatory; mask-image:linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%); -webkit-mask-image:linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);">
 
       <sc-for list="{{ empCards }}" as="emp" hint-placeholder-count="5">
         <div onClick="{{ emp.openModal }}" style="{{ emp.cardStyle }}">
@@ -433,6 +435,12 @@
         </div>
       </sc-for>
 
+    </div>
+
+    <div class="emp-scroll-dots" style="display:none; justify-content:center; gap:6px; margin-top:4px;">
+      <sc-for list="{{ empScrollDots }}" as="dot" hint-placeholder-count="5">
+        <div onClick="{{ dot.onClick }}" style="{{ dot.style }}"></div>
+      </sc-for>
     </div>
   </div>
 
@@ -504,7 +512,7 @@
       <!-- Dicoding Sports tab: 2-column auto-rotating layout -->
       <sc-if value="{{ isSportsTab }}" hint-placeholder-val="{{ true }}">
         <div class="life-gallery" style="{{ lifeGalleryStyle }}" onMouseEnter="{{ lifeSportsPause }}" onMouseLeave="{{ lifeSportsResume }}">
-          <div style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
+          <div data-swipe="sportsLeft" style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
             <sc-for list="{{ sportsLeftPhotos }}" as="sp" hint-placeholder-count="4">
               <sc-if value="{{ sp.hasPhoto }}" hint-placeholder-val="{{ false }}">
                 <img src="{{ sp.src }}" alt="Dicoding Sports activity" loading="lazy" decoding="async" style="{{ sp.imgStyle }}">
@@ -516,7 +524,7 @@
               </sc-for>
             </div>
           </div>
-          <div style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
+          <div data-swipe="sportsRight" style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
             <sc-for list="{{ sportsRightPhotos }}" as="sp" hint-placeholder-count="4">
               <sc-if value="{{ sp.hasPhoto }}" hint-placeholder-val="{{ false }}">
                 <img src="{{ sp.src }}" alt="Dicoding Sports activity" loading="lazy" decoding="async" style="{{ sp.imgStyle }}">
@@ -538,7 +546,7 @@
       <!-- Internal Events tab: 2-column auto-rotating layout -->
       <sc-if value="{{ isInternalTab }}" hint-placeholder-val="{{ false }}">
         <div class="life-gallery" style="{{ lifeGalleryStyle }}" onMouseEnter="{{ lifeIntPause }}" onMouseLeave="{{ lifeIntResume }}">
-          <div style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
+          <div data-swipe="intLeft" style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
             <sc-for list="{{ intLeftPhotos }}" as="ip" hint-placeholder-count="5">
               <sc-if value="{{ ip.hasPhoto }}" hint-placeholder-val="{{ false }}">
                 <img src="{{ ip.src }}" alt="Internal team event" loading="lazy" decoding="async" style="{{ ip.imgStyle }}">
@@ -550,7 +558,7 @@
               </sc-for>
             </div>
           </div>
-          <div style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
+          <div data-swipe="intRight" style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
             <sc-for list="{{ intRightPhotos }}" as="ip" hint-placeholder-count="5">
               <sc-if value="{{ ip.hasPhoto }}" hint-placeholder-val="{{ false }}">
                 <img src="{{ ip.src }}" alt="Internal team event" loading="lazy" decoding="async" style="{{ ip.imgStyle }}">
@@ -573,7 +581,7 @@
       <sc-if value="{{ isExternalTab }}" hint-placeholder-val="{{ false }}">
         <div class="life-gallery" style="{{ lifeGalleryStyle }}" onMouseEnter="{{ lifeExtPause }}" onMouseLeave="{{ lifeExtResume }}">
           <!-- Left column -->
-          <div style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
+          <div data-swipe="extLeft" style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
             <sc-for list="{{ extLeftPhotos }}" as="ep" hint-placeholder-count="3">
               <sc-if value="{{ ep.hasPhoto }}" hint-placeholder-val="{{ false }}">
                 <img src="{{ ep.src }}" alt="External community event" loading="lazy" decoding="async" style="{{ ep.imgStyle }}">
@@ -586,7 +594,7 @@
             </div>
           </div>
           <!-- Right column -->
-          <div style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
+          <div data-swipe="extRight" style="flex:1; position:relative; height:380px; border-radius:12px; overflow:hidden; background:#F2F4F7;">
             <sc-for list="{{ extRightPhotos }}" as="ep" hint-placeholder-count="3">
               <sc-if value="{{ ep.hasPhoto }}" hint-placeholder-val="{{ false }}">
                 <img src="{{ ep.src }}" alt="External community event" loading="lazy" decoding="async" style="{{ ep.imgStyle }}">
@@ -841,7 +849,7 @@
   &quot;heroStyle&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Stats&quot;, &quot;Centered&quot;], &quot;default&quot;: &quot;Stats&quot;, &quot;tsType&quot;: &quot;string&quot; }
 }">
 class Component extends DCLogic {
-  state = { activeTab: 'All', showToast: false, appliedJob: '', openValue: 0, lifeTab: 0, lifeThumb: 0, lifeVisible: true, lifeModalOpen: false, lifeModalItem: null, officeBintaroIdx: 0, officeBandungIdx: 0, lifeExtLeftIdx: 0, lifeExtRightIdx: 0, lifeIntLeftIdx: 0, lifeIntRightIdx: 0, lifeSportsLeftIdx: 0, lifeSportsRightIdx: 0, empModal: -1, empModalPhoto: 0, mobileMenuOpen: false };
+  state = { activeTab: 'All', showToast: false, appliedJob: '', openValue: 0, lifeTab: 0, lifeThumb: 0, lifeVisible: true, lifeModalOpen: false, lifeModalItem: null, officeBintaroIdx: 0, officeBandungIdx: 0, lifeExtLeftIdx: 0, lifeExtRightIdx: 0, lifeIntLeftIdx: 0, lifeIntRightIdx: 0, lifeSportsLeftIdx: 0, lifeSportsRightIdx: 0, empModal: -1, empModalPhoto: 0, mobileMenuOpen: false, empScrollIdx: 0 };
   _galleryTimer = null;
   _empModalTimer = null;
   _officeBintaroTimer = null;
@@ -861,6 +869,33 @@ class Component extends DCLogic {
   _sportsRightTimer = null;
   _bintaroPhotos = ['uploads/Bintaro_1-c787f912.jpg', 'uploads/Bintaro_2-745b3564.jpg'];
   _bandungPhotos = ['uploads/Bandung_1-0148e0fc.jpg', 'uploads/Bandung_2-f1728854.jpg', 'uploads/Bandung_3-5efdcf9d.JPG'];
+
+  _handleSwipe = (key, dir) => {
+    const dirStep = dir === 'next' ? 1 : -1;
+    if (key === 'emp') {
+      const el = document.getElementById('emp-scroll');
+      const count = el ? el.children.length : 0;
+      if (!count) return;
+      const cur = this.state.empScrollIdx || 0;
+      const next = Math.max(0, Math.min(cur + dirStep, count - 1));
+      this.setState({ empScrollIdx: next });
+      if (el) el.scrollTo({ left: next * 320, behavior: 'smooth' });
+      return;
+    }
+    const COL_MAP = {
+      sportsLeft:  { state: 'lifeSportsLeftIdx',  photos: '_sportsLeftPhotos' },
+      sportsRight: { state: 'lifeSportsRightIdx', photos: '_sportsRightPhotos' },
+      intLeft:     { state: 'lifeIntLeftIdx',      photos: '_intLeftPhotos' },
+      intRight:    { state: 'lifeIntRightIdx',     photos: '_intRightPhotos' },
+      extLeft:     { state: 'lifeExtLeftIdx',       photos: '_extLeftPhotos' },
+      extRight:    { state: 'lifeExtRightIdx',      photos: '_extRightPhotos' },
+    };
+    const cfg = COL_MAP[key];
+    if (!cfg) return;
+    const len = this[cfg.photos].length;
+    if (!len) return;
+    this.setState((s) => ({ [cfg.state]: (s[cfg.state] + dirStep + len) % len }));
+  };
 
   _startGallery() {
     this._galleryTimer = setInterval(() => {
@@ -921,7 +956,50 @@ class Component extends DCLogic {
         scrollEl.scrollTo({ left: 60, behavior: 'smooth' });
         setTimeout(() => scrollEl.scrollTo({ left: 0, behavior: 'smooth' }), 800);
       }, 1200);
+      // Keep dot navigator in sync with manual/native scrolling too
+      let scrollSyncTimer = null;
+      scrollEl.addEventListener('scroll', () => {
+        clearTimeout(scrollSyncTimer);
+        scrollSyncTimer = setTimeout(() => {
+          const idx = Math.round(scrollEl.scrollLeft / 320);
+          if (idx !== (this.state.empScrollIdx || 0)) this.setState({ empScrollIdx: idx });
+        }, 100);
+      }, { passive: true });
     }
+
+    // ── Touch swipe gesture (Our Employees + Life at Dicoding galleries) ──
+    const SWIPE_THRESHOLD = 50;
+    let swipeTarget = null, swipeStartX = 0, swipeStartY = 0;
+    const handleTouchStart = (e) => {
+      const el = e.target.closest('[data-swipe]');
+      swipeTarget = el || null;
+      if (!el) return;
+      swipeStartX = e.touches[0].clientX;
+      swipeStartY = e.touches[0].clientY;
+    };
+    const handleTouchMove = (e) => {
+      if (!swipeTarget) return;
+      // tracked purely to establish swipe intent; no-op otherwise
+      const touch = e.touches[0];
+      swipeTarget._lastDx = touch.clientX - swipeStartX;
+      swipeTarget._lastDy = touch.clientY - swipeStartY;
+    };
+    const handleTouchEnd = (e) => {
+      if (!swipeTarget) return;
+      const touch = e.changedTouches[0];
+      const dx = touch.clientX - swipeStartX;
+      const dy = touch.clientY - swipeStartY;
+      if (Math.abs(dx) >= SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+        this._handleSwipe(swipeTarget.getAttribute('data-swipe'), dx < 0 ? 'next' : 'prev');
+      }
+      swipeTarget = null;
+    };
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    document.addEventListener('touchmove', handleTouchMove, { passive: true });
+    document.addEventListener('touchend', handleTouchEnd, { passive: true });
+    this._handleTouchStart = handleTouchStart;
+    this._handleTouchMove = handleTouchMove;
+    this._handleTouchEnd = handleTouchEnd;
 
     const cards = document.querySelectorAll('.why-card');
     const observer = new IntersectionObserver((entries) => {
@@ -940,7 +1018,7 @@ class Component extends DCLogic {
     cards.forEach(c => observer.observe(c));
 
     // Animate heading + photo when section enters view
-    const whySection = document.getElementById('how-we-work');
+    const whySection = document.getElementById('why-us');
     if (whySection && !whySection._whyAnimated) {
       const whyObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1427,6 +1505,19 @@ class Component extends DCLogic {
       cardStyle: cardBase,
     }));
 
+    const empScrollIdx = this.state.empScrollIdx || 0;
+    const empScrollDots = EMPLOYEES.map((_, i) => ({
+      onClick: () => {
+        this.setState({ empScrollIdx: i });
+        const el = document.getElementById('emp-scroll');
+        if (el) el.scrollTo({ left: i * 320, behavior: 'smooth' });
+      },
+      style: {
+        width: i === empScrollIdx ? '20px' : '8px', height: '8px', borderRadius: '4px',
+        background: i === empScrollIdx ? '#2563EB' : '#D0D5DD', transition: 'all 0.3s', cursor: 'pointer', flexShrink: 0,
+      },
+    }));
+
     // ── Jobs ────────────────────────────────────────────
     const JOBS = [
       { id:1, title:'Full-Stack Engineer', dept:'Engineering', location:'Bintaro', type:'Full-time', level:'Mid–Senior', desc:'Build and maintain scalable web applications powering 1M+ learners on Indonesia\'s leading tech education platform.' },
@@ -1477,7 +1568,7 @@ class Component extends DCLogic {
       bintaroPhotos, bandungPhotos, bintaroDots, bandungDots, bintaroEmpty, bandungEmpty,
       pauseOfficeTimers, resumeOfficeTimers, openBintaroModal, openBandungModal,
       lifeOpenModal, lifeModalOpen, lifeModalItem: lifeModalItemSafe, closeLifeModal, stopLifeProp,
-      empCards, empModalOpen, empModalEmployee, empModalQuoteParts, empModalPhotos, empModalHasDots, empModalDots, empModalStyle, empModalPhotoColStyle, closeEmpModal, stopEmpProp,
+      empCards, empScrollDots, empModalOpen, empModalEmployee, empModalQuoteParts, empModalPhotos, empModalHasDots, empModalDots, empModalStyle, empModalPhotoColStyle, closeEmpModal, stopEmpProp,
       pauseEmpModal: () => clearInterval(this._empModalTimer),
       resumeEmpModal: () => { const emp = empModal >= 0 ? EMPLOYEES[empModal] : null; if (emp) { const mPhotos = emp.modalPhotos || emp.photos; const displayCount = mPhotos.length > 1 ? mPhotos.length - 1 : mPhotos.length; if (displayCount > 1) { this._empModalTimer = setInterval(() => { this.setState(s => ({ empModalPhoto: (s.empModalPhoto + 1) % displayCount })); }, 3500); } } },
       gallerySlides, galleryDots, galleryPause, galleryResume, scrollToTop,
